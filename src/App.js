@@ -5,6 +5,7 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
 
+  // useEffect is used for side effects 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos')
       .then((response) => response.json())
@@ -15,17 +16,23 @@ const App = () => {
       .catch((error) => console.error('Error fetching todos:', error));
   }, []);
 
+  // delete functionality
   const handleDelete = (id) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
     setFilteredTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
+
+  // update functionality
   const handleUpdate = (id, updatedText) => {
+    // change the state of todo
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, title: updatedText } : todo
       )
     );
+
+    // change the state of filteredTodos
     setFilteredTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, title: updatedText } : todo

@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 
 
 const Todo = ({ todo, onDelete, onUpdate }) => {
-    const [isEditing, setEditing] = useState(false);
+  const [isEditing, setEditing] = useState(false);
   const [updatedText, setUpdatedText] = useState(todo.title);
 
+  // updating functionality
   const handleUpdate = () => {
     onUpdate(todo.id, updatedText);
     setEditing(false);
