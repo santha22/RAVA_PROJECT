@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 
 
 const Todo = ({ todo, onDelete, onUpdate }) => {
+  // keep track of todo is in edit mode or not
   const [isEditing, setEditing] = useState(false);
+  // state for updated text
   const [updatedText, setUpdatedText] = useState(todo.title);
 
   // updating functionality
